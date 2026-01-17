@@ -1,0 +1,7 @@
+# Ignore build artifacts
+build/
+bin/
+
+# macOS / IDEs
+.DS_Store
+*.dSYM/
