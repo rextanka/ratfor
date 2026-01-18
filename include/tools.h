@@ -11,16 +11,21 @@ typedef int character;
 typedef int integer;
 typedef int bool; // if needed
 
+// define constants used in ratfor programs in "software tools"
 #define TRUE 1
 #define FALSE 0
-#define EOS '\0' 
-#define NEWLINE '\n'
-#define BLANK ' '
-#define TAB '\t'
 #define YES TRUE
 #define NO FALSE
 #define MAXLINE 1000
 
+// character value constants
+#define EOS '\0' 
+#define NEWLINE '\n'
+#define BLANK ' '
+#define TAB '\t'
+#define PERIOD '.'
+#define QUEST  '?'
+#define EXCLAM '!'
 
 // 2. The "Software Tools" Primitives
 // K&P primitives often don't match stdio 1:1.

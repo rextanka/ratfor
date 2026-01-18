@@ -26,5 +26,10 @@ run_test "wordcount (whitespace)" "  one   two  \n" "2" "wordcount"
 # 5. DETAB
 run_test "detab (standard)" "col1\tcol2\n" "col1    col2\n" "detab"
 
+# 6. SENTENCECOUNT
+run_test "sentencecount (basic)" "This is one. This is two!" "2" "sentencecount"
+run_test "sentencecount (multiple)" "Hello? Yes. No! Wait..." "4" "sentencecount"
+run_test "sentencecount (whitespace)" "End of one. \nStart of two." "2" "sentencecount"
+
 report_results
 

@@ -97,12 +97,18 @@ def parse_ratfor_block(lines, global_funcs):
     header_line = ""
     is_main = False
     
-    # Find Header
+   # Find Header
     for line in lines:
         code, _ = split_comment(line)
         code = clean_line_for_parsing(code)
-        if re.match(r'^\s*(subroutine|function|integer\s+function|character\s+function)', code, re.IGNORECASE):
+        # Add 'driver' to the regex for headers
+        if re.match(r'^\s*(subroutine|function|integer\s+function|character\s+function|driver)', code, re.IGNORECASE):
             header_line = code
+            # If it's the driver, treat it as main
+            if "driver" in code.lower():
+                is_main = True
+                header_line = "int main(int argc, char *argv[])"
+                break
             m = re.search(r'\((.*)\)', code)
             if m:
                 args_list = [x.strip() for x in m.group(1).split(',') if x.strip()]
@@ -153,11 +159,15 @@ def parse_ratfor_block(lines, global_funcs):
         
         output.append(f"{ret_type} {func_name}({', '.join(typed_args)}) {{")
 
-    # Generate Body
+# Generate Body
     for line in lines:
         code, comment = split_comment(line)
         if not code:
             if comment: output.append(comment)
+            continue
+
+        # Skip the 'driver' line so it doesn't end up as "driver;" in C
+        if "driver" in code.lower() and "(" not in code:
             continue
 
         # Skip the header line in output
