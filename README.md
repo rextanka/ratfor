@@ -71,6 +71,11 @@ Once tests are green, push to GitHub and use the web interface for the final mer
    git push -u origin <branch-name>
    ``` 
 
+5. You  can find the current branch if you forget the name with
+   ``` bash
+   git branch --show-current
+   ```
+
 Merge Strategy: Use Squash and Merge on GitHub to keep the main history clean.
 ## Resources
 * [The Markdown Guide](https://www.markdownguide.org/)
