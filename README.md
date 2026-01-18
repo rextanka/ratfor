@@ -1,5 +1,7 @@
 # Ratfor Software Tools Framework
 
+![K&P Software Tools CI](https://github.com/rextanka/ratfor/actions/workflows/main.yml/badge.svg)
+
 This repository contains a modern implementation of the tools from Kernighan & Plauger's *Software Tools* (1976). Since the original code is in Ratfor (Rational Fortran), this project uses a custom Python transpiler to target modern C.
 
 ## Project Structure
