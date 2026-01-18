@@ -12,6 +12,10 @@ R2C = python3 $(TOP)/scripts/r2c.py
 BUILD_DIR = $(TOP)/build/$(notdir $(CURDIR))
 BIN_DIR = $(TOP)/bin
 
+# This tells Make that the translated C files are not just "temporary" and should be 
+# kept for inspection or debugging.
+.PRECIOUS: $(BUILD_DIR)/%.c
+
 # Map tool names to the centralized bin directory
 TARGETS = $(addprefix $(BIN_DIR)/, $(TOOLS))
 
